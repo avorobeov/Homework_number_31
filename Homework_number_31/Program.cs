@@ -11,7 +11,6 @@ namespace Homework_number_31
             Console.CursorVisible = false;
 
             bool isPlaying = true;
-
             string mapName = "m1";
             char[,] map;
             int packmanX;
