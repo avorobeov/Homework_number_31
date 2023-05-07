@@ -39,8 +39,6 @@ namespace Homework_number_31
 
                 Thread.Sleep(200);
             }
-            Console.SetCursorPosition(packmanY, packmanX);
-            Console.Write("@");
         }
 
         private static void Move(ref int X, ref int Y, int DX, int DY)
