@@ -21,6 +21,7 @@ namespace Homework_number_31
             int packmanY;
             int packmanDirectionX = 0;
             int packmanDirectionY = 1;
+            int lagTime = 200;
 
             map = ReadMap(mapName, out packmanX,out packmanY, hero, emptyCell, bonusCell);
 
@@ -40,7 +41,7 @@ namespace Homework_number_31
                     Move(ref packmanX, ref packmanY, packmanDirectionX, packmanDirectionY, hero, emptyCell);
                 }
 
-                Thread.Sleep(200);
+                Thread.Sleep(lagTime);
             }
         }
 
