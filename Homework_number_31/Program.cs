@@ -13,12 +13,16 @@ namespace Homework_number_31
             bool isPlaying = true;
             string mapName = "m1";
             char[,] map;
+            char obstacle = '#';
+            char hero = '@';
+            char emptyCell = ' ';
+            char bonusCell = '.';
             int packmanX;
             int packmanY;
-            int packmanDX = 0;
-            int packmanDY = 1;
+            int packmanDirectionX = 0;
+            int packmanDirectionY = 1;
 
-            map = ReadMap(mapName, out packmanX,out packmanY);
+            map = ReadMap(mapName, out packmanX,out packmanY, hero, emptyCell, bonusCell);
 
             DrawMap(map);
 
@@ -28,48 +32,52 @@ namespace Homework_number_31
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
 
-                    ChangeDirection(key, ref packmanDX, ref packmanDY);
+                    ChangeDirection(key, ref packmanDirectionX, ref packmanDirectionY);
                 }
 
-                if (map[packmanX + packmanDX, packmanY + packmanDY] != '#')
+                if (map[packmanX + packmanDirectionX, packmanY + packmanDirectionY] != obstacle)
                 {
-                    Move(ref packmanX, ref packmanY, packmanDX, packmanDY);
+                    Move(ref packmanX, ref packmanY, packmanDirectionX, packmanDirectionY, hero, emptyCell);
                 }
 
                 Thread.Sleep(200);
             }
         }
 
-        private static void Move(ref int X, ref int Y, int DX, int DY)
+        private static void Move(ref int positionX, ref int positionY, int directionX, int directionY, char hero,char emptyCell)
         {
-            Console.SetCursorPosition(Y, X);
-            Console.Write(" ");
+            PrintMove(positionX, positionY, emptyCell);
 
-            X += DX;
-            Y += DY;
+            positionX += directionX;
+            positionY += directionY;
 
-            Console.SetCursorPosition(Y, X);
-            Console.Write('@');
+            PrintMove(positionX, positionY, hero);
+        }
+
+        private static void PrintMove(int positionX, int positionY,char symbol)
+        {
+            Console.SetCursorPosition(positionY, positionX);
+            Console.Write(symbol);
         }
         
-        private static void ChangeDirection(ConsoleKeyInfo key,ref int DX,ref int DY)
+        private static void ChangeDirection(ConsoleKeyInfo key,ref int directionX,ref int directionY)
         {
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    DX = -1; DY = 0;
+                    directionX = -1; directionY = 0;
                     break;
 
                 case ConsoleKey.DownArrow:
-                    DX = 1; DY = 0;
+                    directionX = 1; directionY = 0;
                     break;
 
                 case ConsoleKey.LeftArrow:
-                    DX = 0; DY = -1;
+                    directionX = 0; directionY = -1;
                     break;
 
                 case ConsoleKey.RightArrow:
-                    DX = 0; DY = 1;
+                    directionX = 0; directionY = 1;
                     break;
             }
         }
@@ -87,7 +95,7 @@ namespace Homework_number_31
             }
         }
 
-        private static char[,] ReadMap(string mapName, out int packmanX, out int packmanY)
+        private static char[,] ReadMap(string mapName, out int packmanX, out int packmanY,char hero, char emptyCell,char bonusCell)
         {
             packmanX = 0;
             packmanY = 0;
@@ -101,14 +109,14 @@ namespace Homework_number_31
                 {
                     map[i, j] = newFile[i][j];
 
-                    if (map[i, j] == '@')
+                    if (map[i, j] == hero)
                     {
                         packmanX = i;
                         packmanY = j;
                     }
-                    else if (map[i, j] == ' ')
+                    else if (map[i, j] == emptyCell)
                     {
-                        map[i, j] = '.';
+                        map[i, j] = bonusCell;
                     }
                 }
             }
