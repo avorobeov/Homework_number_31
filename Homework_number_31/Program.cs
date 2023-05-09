@@ -23,7 +23,7 @@ namespace Homework_number_31
             int packmanDirectionY = 1;
             int lagTime = 200;
 
-            map = ReadMap(mapName, out packmanX,out packmanY, hero, emptyCell, bonusCell);
+            map = ReadMap(mapName, out packmanX, out packmanY, hero, emptyCell, bonusCell);
 
             DrawMap(map);
 
@@ -45,7 +45,7 @@ namespace Homework_number_31
             }
         }
 
-        private static void Move(ref int positionX, ref int positionY, int directionX, int directionY, char hero,char emptyCell)
+        private static void Move(ref int positionX, ref int positionY, int directionX, int directionY, char hero, char emptyCell)
         {
             PrintMove(positionX, positionY, emptyCell);
 
@@ -55,13 +55,13 @@ namespace Homework_number_31
             PrintMove(positionX, positionY, hero);
         }
 
-        private static void PrintMove(int positionX, int positionY,char symbol)
+        private static void PrintMove(int positionX, int positionY, char symbol)
         {
             Console.SetCursorPosition(positionY, positionX);
             Console.Write(symbol);
         }
-        
-        private static void ChangeDirection(ConsoleKeyInfo key,ref int directionX,ref int directionY)
+
+        private static void ChangeDirection(ConsoleKeyInfo key, ref int directionX, ref int directionY)
         {
             switch (key.Key)
             {
@@ -96,7 +96,7 @@ namespace Homework_number_31
             }
         }
 
-        private static char[,] ReadMap(string mapName, out int packmanX, out int packmanY,char hero, char emptyCell,char bonusCell)
+        private static char[,] ReadMap(string mapName, out int packmanX, out int packmanY, char hero, char emptyCell, char bonusCell)
         {
             packmanX = 0;
             packmanY = 0;
