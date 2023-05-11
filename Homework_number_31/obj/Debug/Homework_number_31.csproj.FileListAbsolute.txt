@@ -5,3 +5,11 @@ C:\Users\avoro\source\repos\Homework_number_31\Homework_number_31\obj\Debug\Home
 C:\Users\avoro\source\repos\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.csproj.CoreCompileInputs.cache
 C:\Users\avoro\source\repos\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.exe
 C:\Users\avoro\source\repos\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.pdb
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\bin\Debug\Homework_number_31.exe.config
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\bin\Debug\Homework_number_31.exe
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\bin\Debug\Homework_number_31.pdb
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.csproj.AssemblyReference.cache
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.csproj.SuggestedBindingRedirects.cache
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.csproj.CoreCompileInputs.cache
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.exe
+C:\Users\avoro\source\repos\Homework\Homework_number_31\Homework_number_31\obj\Debug\Homework_number_31.pdb

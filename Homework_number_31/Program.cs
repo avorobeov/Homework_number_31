@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Threading;
 
@@ -6,6 +7,11 @@ namespace Homework_number_31
 {
     class Program
     {
+        const ConsoleKey CommandToUp = ConsoleKey.UpArrow;
+        const ConsoleKey CommandToDown = ConsoleKey.DownArrow;
+        const ConsoleKey CommandToLeft = ConsoleKey.LeftArrow;
+        const ConsoleKey CommandToRight = ConsoleKey.RightArrow;
+
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
@@ -17,13 +23,13 @@ namespace Homework_number_31
             char hero = '@';
             char emptyCell = ' ';
             char bonusCell = '.';
-            int packmanX;
-            int packmanY;
+            int packmanPositionX;
+            int packmanPositionY;
             int packmanDirectionX = 0;
             int packmanDirectionY = 1;
             int lagTime = 200;
 
-            map = ReadMap(mapName, out packmanX, out packmanY, hero, emptyCell, bonusCell);
+            map = ReadMap(mapName, out packmanPositionX, out packmanPositionY, hero, emptyCell, bonusCell);
 
             DrawMap(map);
 
@@ -36,9 +42,9 @@ namespace Homework_number_31
                     ChangeDirection(key, ref packmanDirectionX, ref packmanDirectionY);
                 }
 
-                if (map[packmanX + packmanDirectionX, packmanY + packmanDirectionY] != obstacle)
+                if (map[packmanPositionX + packmanDirectionX, packmanPositionY + packmanDirectionY] != obstacle)
                 {
-                    Move(ref packmanX, ref packmanY, packmanDirectionX, packmanDirectionY, hero, emptyCell);
+                    Move(ref packmanPositionX, ref packmanPositionY, packmanDirectionX, packmanDirectionY, hero, emptyCell);
                 }
 
                 Thread.Sleep(lagTime);
@@ -65,19 +71,19 @@ namespace Homework_number_31
         {
             switch (key.Key)
             {
-                case ConsoleKey.UpArrow:
+                case CommandToUp:
                     directionX = -1; directionY = 0;
                     break;
 
-                case ConsoleKey.DownArrow:
+                case CommandToDown:
                     directionX = 1; directionY = 0;
                     break;
 
-                case ConsoleKey.LeftArrow:
+                case CommandToLeft:
                     directionX = 0; directionY = -1;
                     break;
 
-                case ConsoleKey.RightArrow:
+                case CommandToRight:
                     directionX = 0; directionY = 1;
                     break;
             }
@@ -96,10 +102,10 @@ namespace Homework_number_31
             }
         }
 
-        private static char[,] ReadMap(string mapName, out int packmanX, out int packmanY, char hero, char emptyCell, char bonusCell)
+        private static char[,] ReadMap(string mapName, out int packmanPositionX, out int packmanPositionY, char hero, char emptyCell, char bonusCell)
         {
-            packmanX = 0;
-            packmanY = 0;
+            packmanPositionX = 0;
+            packmanPositionY = 0;
 
             string[] newFile = File.ReadAllLines($"Maps\\{mapName}.txt");
             char[,] map = new char[newFile.Length, newFile[0].Length];
@@ -112,8 +118,8 @@ namespace Homework_number_31
 
                     if (map[i, j] == hero)
                     {
-                        packmanX = i;
-                        packmanY = j;
+                        packmanPositionX = i;
+                        packmanPositionY = j;
                     }
                     else if (map[i, j] == emptyCell)
                     {
